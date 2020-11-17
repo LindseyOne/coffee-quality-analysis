@@ -29,3 +29,13 @@ ggplot(data = points, aes(x = points)) +
     min(points$points), max(points$points), by = 3
   ), 1)) +
   labs(x = "Total Cup Points", y = "Density", title = "Total Cup Points distribution by species")
+
+library("corrplot")
+
+corrplot(cor(arabica[c(13, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 36, 42, 43, 44)], use =
+               "na.or.complete", method = "spearman"),
+         method = "number")
+
+corrplot(cor(robusta[c(13, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 36, 42, 43, 44)], use =
+               "na.or.complete", method = "spearman"),
+         method = "number")
