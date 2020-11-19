@@ -20,7 +20,11 @@ points <- rbind(pointsArabica, pointsRobusta)
 
 library(ggplot2)
 
-# TODO arabica/robusta obs. count chart.
+ggplot(data = points, aes(x = species)) +
+  geom_bar(aes(fill = species)) +
+  scale_fill_manual(values = c("#00ff00", "#0000ff")) +
+  labs(x = "Species", y = "Count", title = "Total observations")
+
 
 ggplot(data = points, aes(x = points)) +
   geom_density(aes(fill = species, alpha = species)) +
