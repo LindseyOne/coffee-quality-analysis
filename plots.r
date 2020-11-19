@@ -23,8 +23,8 @@ library(ggplot2)
 ggplot(data = points, aes(x = species)) +
   geom_bar(aes(fill = species)) +
   scale_fill_manual(values = c("#00ff00", "#0000ff")) +
-  labs(x = "Species", y = "Count", title = "Total observations")
-
+  labs(x = "Species", y = "Count", title = "Total observations") +
+  theme_minimal()
 
 ggplot(data = points, aes(x = points)) +
   geom_density(aes(fill = species, alpha = species)) +
@@ -33,7 +33,8 @@ ggplot(data = points, aes(x = points)) +
   scale_x_continuous(breaks = round(seq(
     min(points$points), max(points$points), by = 3
   ), 1)) +
-  labs(x = "Total Cup Points", y = "Density", title = "Total Cup Points distribution by species")
+  labs(x = "Total Cup Points", y = "Density", title = "Total Cup Points distribution by species") +
+  theme_minimal()
 
 library("corrplot")
 
@@ -51,7 +52,9 @@ corrplot(
   order = "hclust"
 )
 
-# Acidity / Altitude
+# Arabica
+
+## Acidity / Altitude
 
 ggplot(
   data = arabica,
@@ -204,7 +207,7 @@ ggplot(
   labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
 
-# Balance / Moisture
+## Balance / Moisture
 
 ggplot(data = arabica,
        aes(
@@ -348,7 +351,7 @@ ggplot(data = arabica,
   labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
 
-# Category Two Defects / Aftertaste
+## Category Two Defects / Aftertaste
 
 ggplot(
   data = arabica,
@@ -497,3 +500,335 @@ ggplot(
   ylim(6, 9) +
   labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
+
+# Robusta
+
+## Fragrance...Aroma / Altitude
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Fragrance...Aroma,
+    y = altitude_mean_meters,
+    size = Total.Cup.Points,
+    color = Country.of.Origin
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Origin",
+    values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Origin") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Fragrance...Aroma,
+    y = altitude_mean_meters,
+    size = Total.Cup.Points,
+    color = Region
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Region",
+    values = c(
+      "#2f4f4f",
+      "#006400",
+      "#000080",
+      "#ff0000",
+      "#00ced1",
+      "#ffa500",
+      "#ffff00",
+      "#00ff00",
+      "#00fa9a",
+      "#0000ff",
+      "#ff00ff",
+      "#fa8072",
+      "#eee8aa",
+      "#dda0dd",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Region") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Fragrance...Aroma,
+    y = altitude_mean_meters,
+    size = Total.Cup.Points,
+    color = Variety
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Variety",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Variety") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Fragrance...Aroma,
+    y = altitude_mean_meters,
+    size = Total.Cup.Points,
+    color = Processing.Method
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Processing Method",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Processing Method") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+## Category Two Defects / Moisture
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Moisture,
+    y = Category.Two.Defects,
+    size = Total.Cup.Points,
+    color = Country.of.Origin
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Origin",
+    values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Origin") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Moisture,
+    y = Category.Two.Defects,
+    size = Total.Cup.Points,
+    color = Region
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Region",
+    values = c(
+      "#2f4f4f",
+      "#006400",
+      "#000080",
+      "#ff0000",
+      "#00ced1",
+      "#ffa500",
+      "#ffff00",
+      "#00ff00",
+      "#00fa9a",
+      "#0000ff",
+      "#ff00ff",
+      "#fa8072",
+      "#eee8aa",
+      "#dda0dd",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Region") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Moisture,
+    y = Category.Two.Defects,
+    size = Total.Cup.Points,
+    color = Variety
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Variety",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Variety") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Moisture,
+    y = Category.Two.Defects,
+    size = Total.Cup.Points,
+    color = Processing.Method
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Processing Method",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Processing Method") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+## Category Two Defects / Clean Cup
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Category.Two.Defects,
+    y = Clean.Cup,
+    size = Total.Cup.Points,
+    color = Country.of.Origin
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Origin",
+    values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Origin") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Category.Two.Defects,
+    y = Clean.Cup,
+    size = Total.Cup.Points,
+    color = Region
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Region",
+    values = c(
+      "#2f4f4f",
+      "#006400",
+      "#000080",
+      "#ff0000",
+      "#00ced1",
+      "#ffa500",
+      "#ffff00",
+      "#00ff00",
+      "#00fa9a",
+      "#0000ff",
+      "#ff00ff",
+      "#fa8072",
+      "#eee8aa",
+      "#dda0dd",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Region") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Category.Two.Defects,
+    y = Clean.Cup,
+    size = Total.Cup.Points,
+    color = Variety
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Variety",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Variety") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
+
+ggplot(
+  data = robusta,
+  aes(
+    x = Category.Two.Defects,
+    y = Clean.Cup,
+    size = Total.Cup.Points,
+    color = Processing.Method
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(75, 77.5, 80),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(name = "Processing Method",
+                      values = c("#ff0000", "#00ff00", "#0000ff")) +
+  geom_point(position = "jitter", alpha = .666) +
+  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Processing Method") +
+  theme_minimal() +
+  geom_jitter(width = 0.1, height = 0.1)
