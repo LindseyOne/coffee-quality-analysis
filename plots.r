@@ -168,6 +168,38 @@ ggplot(
   labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Variety") +
   theme_minimal()
 
+ggplot(
+  data = arabica,
+  aes(
+    x = Acidity,
+    y = altitude_mean_meters,
+    size = Total.Cup.Points,
+    color = Processing.Method
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(85, 87.5, 90),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Processing Method",
+    values = c(
+      "#66cdaa",
+      "#ffa500",
+      "#00ff00",
+      "#0000ff",
+      "#1e90ff",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  xlim(5.25, 8.75) +
+  ylim(0, 2750) +
+  labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Processing Method") +
+  theme_minimal()
+
 # Balance / Moisture
 
 ggplot(data = arabica,
@@ -281,6 +313,35 @@ ggplot(data = arabica,
   geom_point(position = "jitter", alpha = .666) +
   xlim(6, 9) +
   labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Variety") +
+  theme_minimal()
+
+ggplot(data = arabica,
+       aes(
+         x = Balance,
+         y = Moisture,
+         size = Total.Cup.Points,
+         color = Processing.Method
+       )) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(85, 87.5, 90),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Processing Method",
+    values = c(
+      "#66cdaa",
+      "#ffa500",
+      "#00ff00",
+      "#0000ff",
+      "#1e90ff",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  xlim(6, 9) +
+  labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
 
 # Category Two Defects / Aftertaste
@@ -400,4 +461,35 @@ ggplot(
   geom_point(position = "jitter", alpha = .666) +
   ylim(6, 9) +
   labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Variety") +
+  theme_minimal()
+
+ggplot(
+  data = arabica,
+  aes(
+    x = Category.Two.Defects,
+    y = Aftertaste,
+    size = Total.Cup.Points,
+    color = Processing.Method
+  )
+) +
+  scale_size(
+    name = "Total Cup Points",
+    breaks = c(85, 87.5, 90),
+    range = c(4, 20),
+    trans = "exp"
+  ) +
+  scale_colour_manual(
+    name = "Processing Method",
+    values = c(
+      "#66cdaa",
+      "#ffa500",
+      "#00ff00",
+      "#0000ff",
+      "#1e90ff",
+      "#ff1493"
+    )
+  ) +
+  geom_point(position = "jitter", alpha = .666) +
+  ylim(6, 9) +
+  labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
