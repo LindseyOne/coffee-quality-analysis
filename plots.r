@@ -56,6 +56,8 @@ corrplot(
 
 ## Acidity / Altitude
 
+j1 <- position_jitter(width = 0.1, height = 0.1)
+
 ggplot(
   data = arabica,
   aes(
@@ -113,7 +115,7 @@ ggplot(
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j1, alpha = .666) +
   xlim(5.25, 8.75) +
   ylim(0, 2750) +
   labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Origin") +
@@ -169,7 +171,7 @@ ggplot(
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j1, alpha = .666) +
   xlim(5.25, 8.75) +
   ylim(0, 2750) +
   labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Variety") +
@@ -201,13 +203,15 @@ ggplot(
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j1, alpha = .666) +
   xlim(5.25, 8.75) +
   ylim(0, 2750) +
   labs(x = "Acidity", y = "Altitude [m]", title = "Acidity / Altitude / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
 
 ## Balance / Moisture
+
+j2 <- position_jitter(width = 0.1, height = 0.1)
 
 ggplot(data = arabica,
        aes(
@@ -264,7 +268,7 @@ ggplot(data = arabica,
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j2, alpha = .666) +
   xlim(6, 9) +
   labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Origin") +
   theme_minimal()
@@ -317,7 +321,7 @@ ggplot(data = arabica,
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j2, alpha = .666) +
   xlim(6, 9) +
   labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Variety") +
   theme_minimal()
@@ -346,12 +350,14 @@ ggplot(data = arabica,
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j2, alpha = .666) +
   xlim(6, 9) +
   labs(x = "Balance", y = "Moisture", title = "Balance / Moisture / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
 
 ## Category Two Defects / Aftertaste
+
+j3 <- position_jitter(width = 0.1, height = 0.1)
 
 ggplot(
   data = arabica,
@@ -410,7 +416,7 @@ ggplot(
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j3, alpha = .666) +
   ylim(6, 9) +
   labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Origin") +
   theme_minimal()
@@ -465,7 +471,7 @@ ggplot(
       "#ffc0cb"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j3, alpha = .666) +
   ylim(6, 9) +
   labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Variety") +
   theme_minimal()
@@ -496,7 +502,7 @@ ggplot(
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j3, alpha = .666) +
   ylim(6, 9) +
   labs(x = "Category Two Defects", y = "Aftertaste", title = "Category Two Defects / Aftertaste / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal()
@@ -504,6 +510,8 @@ ggplot(
 # Robusta
 
 ## Fragrance...Aroma / Altitude
+
+j4 <- position_jitter(width = 0.1, height = 0.1)
 
 ggplot(
   data = robusta,
@@ -524,7 +532,7 @@ ggplot(
     name = "Origin",
     values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j4, alpha = .666) +
   labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Origin") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -564,7 +572,7 @@ ggplot(
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j4, alpha = .666) +
   labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Region") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -586,7 +594,7 @@ ggplot(
   ) +
   scale_colour_manual(name = "Variety",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j4, alpha = .666) +
   labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Variety") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -608,12 +616,14 @@ ggplot(
   ) +
   scale_colour_manual(name = "Processing Method",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j4, alpha = .666) +
   labs(x = "Fragrance...Aroma", y = "Altitude [m]", title = "Fragrance...Aroma / Altitude / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
 
 ## Category Two Defects / Moisture
+
+j5 <- position_jitter(width = 0.1, height = 0.1)
 
 ggplot(
   data = robusta,
@@ -634,7 +644,7 @@ ggplot(
     name = "Origin",
     values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j5, alpha = .666) +
   labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Origin") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -674,7 +684,7 @@ ggplot(
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j5, alpha = .666) +
   labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Region") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -696,7 +706,7 @@ ggplot(
   ) +
   scale_colour_manual(name = "Variety",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j5, alpha = .666) +
   labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Variety") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
@@ -718,12 +728,14 @@ ggplot(
   ) +
   scale_colour_manual(name = "Processing Method",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
+  geom_point(position = j5, alpha = .666) +
   labs(x = "Moisture", y = "Category Two Defects", title = "Moisture / Category Two Defects / Total Cup Points (bubble size) / Processing Method") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
 
-## Category Two Defects / Clean Cup
+## Category Two Defects / Cup Cleanliness
+
+j6 <- position_jitter(width = 0.1, height = 0.1)
 
 ggplot(
   data = robusta,
@@ -744,8 +756,8 @@ ggplot(
     name = "Origin",
     values = c("#008b8b", "#ffa500", "#00ff00", "#0000ff", "#ff1493")
   ) +
-  geom_point(position = "jitter", alpha = .666) +
-  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Origin") +
+  geom_point(position = j6, alpha = .666) +
+  labs(x = "Category Two Defects", y = "Cup Cleanliness", title = "Category Two Defects / Cup Cleanliness / Total Cup Points (bubble size) / Origin") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
 
@@ -784,8 +796,8 @@ ggplot(
       "#ff1493"
     )
   ) +
-  geom_point(position = "jitter", alpha = .666) +
-  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Region") +
+  geom_point(position = j6, alpha = .666) +
+  labs(x = "Category Two Defects", y = "Cup Cleanliness", title = "Category Two Defects / Cup Cleanliness / Total Cup Points (bubble size) / Region") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
 
@@ -806,8 +818,8 @@ ggplot(
   ) +
   scale_colour_manual(name = "Variety",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
-  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Variety") +
+  geom_point(position = j6, alpha = .666) +
+  labs(x = "Category Two Defects", y = "Cup Cleanliness", title = "Category Two Defects / Cup Cleanliness / Total Cup Points (bubble size) / Variety") +
   theme_minimal() +
   geom_jitter(width = 0.1, height = 0.1)
 
@@ -828,7 +840,6 @@ ggplot(
   ) +
   scale_colour_manual(name = "Processing Method",
                       values = c("#ff0000", "#00ff00", "#0000ff")) +
-  geom_point(position = "jitter", alpha = .666) +
-  labs(x = "Category Two Defects", y = "Clean Cup", title = "Category Two Defects / Clean Cup / Total Cup Points (bubble size) / Processing Method") +
-  theme_minimal() +
-  geom_jitter(width = 0.1, height = 0.1)
+  geom_point(position = j6, alpha = .666) +
+  labs(x = "Category Two Defects", y = "Cup Cleanliness", title = "Category Two Defects / Cup Cleanliness / Total Cup Points (bubble size) / Processing Method") +
+  theme_minimal()
