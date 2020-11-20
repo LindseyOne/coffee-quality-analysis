@@ -211,7 +211,7 @@ ggplot(
 
 ## Balance / Moisture
 
-j2 <- position_jitter(width = 0.1, height = 0.1)
+j2 <- position_jitter(width = 0.1, height = 0.01)
 
 ggplot(data = arabica,
        aes(
